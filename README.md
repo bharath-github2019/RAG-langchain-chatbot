@@ -2,17 +2,17 @@
 
 (Disclaimer: ChatGPT generted content)
 
-Project Title
+#Project Title
 
 Local RAG-Based Chatbot using LangChain, FAISS, and HuggingFace Embeddings
 
-Project Overview
+#Project Overview
 
 This project implements a Retrieval-Augmented Generation (RAG) chatbot that answers user questions strictly based on the content of provided documents. The system is designed to be cost-efficient, modular, and fully local, avoiding dependency on paid APIs for embeddings and retrieval.
 
 The chatbot ingests PDF documents, converts them into vector embeddings, stores them in a vector database, retrieves relevant document chunks for a user query, and generates context-grounded responses using a language model.
 
-Problem Statement
+#Problem Statement
 
 Large Language Models can hallucinate or provide generic answers when queried directly. This project solves that by grounding responses in verified document data, making the chatbot reliable for use cases such as:
 
@@ -26,14 +26,14 @@ Knowledge-base assistants
 
 System Architecture
 
-User Query
+#User Query
 → Retriever (FAISS vector search)
 → Relevant Document Chunks
 → Prompt with Context
 → Language Model
 → Grounded Answer
 
-Key Components
+#Key Components
 1. Document Ingestion
 
 PDF files are loaded from a local data/ directory
