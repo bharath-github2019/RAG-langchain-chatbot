@@ -1,0 +1,8 @@
+langchain==0.2.16
+langchain-core==0.2.38
+langchain-community==0.2.16
+langchain-openai==0.1.25
+langchain-huggingface==0.0.3
+sentence-transformers
+faiss-cpu
+pypdf
