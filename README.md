@@ -1,46 +1,41 @@
-# RAG LangChain Sample
+RAG LangChain Sample
 
-(Disclaimer: ChatGPT generted content)
+Local RAG-Based Chatbot using LangChain, FAISS, and HuggingFace
+Overview
 
-# Project Title
+This project demonstrates a fully local Retrieval-Augmented Generation (RAG) chatbot that answers user queries strictly based on provided documents. It is designed to be cost-efficient, modular, and reliable, with no dependency on paid APIs for embeddings or retrieval.
 
-Local RAG-Based Chatbot using LangChain, FAISS, and HuggingFace Embeddings
+The system ingests PDF documents, converts them into vector embeddings, retrieves relevant content using similarity search, and generates context-aware responses grounded only in the source data.
 
-# Project Overview
+Why RAG?
 
-This project implements a Retrieval-Augmented Generation (RAG) chatbot that answers user questions strictly based on the content of provided documents. The system is designed to be cost-efficient, modular, and fully local, avoiding dependency on paid APIs for embeddings and retrieval.
+Large Language Models can hallucinate or produce generic answers when used standalone. This project mitigates that risk by grounding responses in verified document content, making it suitable for use cases such as:
 
-The chatbot ingests PDF documents, converts them into vector embeddings, stores them in a vector database, retrieves relevant document chunks for a user query, and generates context-grounded responses using a language model.
-
-# Problem Statement
-
-Large Language Models can hallucinate or provide generic answers when queried directly. This project solves that by grounding responses in verified document data, making the chatbot reliable for use cases such as:
-
-Internal policy Q&A
+Internal policy and compliance Q&A
 
 Employee handbooks
 
-Product documentation
+Product and technical documentation
 
 Knowledge-base assistants
 
-System Architecture
+Architecture
 
-# User Query
-→ Retriever (FAISS vector search)
+User Query
+→ FAISS Vector Search
 → Relevant Document Chunks
-→ Prompt with Context
+→ Context-Aware Prompt
 → Language Model
 → Grounded Answer
 
-# Key Components
+Core Components
 1. Document Ingestion
 
-PDF files are loaded from a local data/ directory
+Loads PDF files from a local data/ directory
 
-Documents are split into overlapping text chunks to preserve context
+Splits documents into overlapping text chunks
 
-Chunking ensures efficient retrieval and accurate answers
+Preserves context while enabling efficient retrieval
 
 2. Embedding Generation (Local & Free)
 
@@ -48,36 +43,44 @@ Uses HuggingFace sentence-transformer models
 
 Converts text chunks into dense vector embeddings
 
-Eliminates reliance on paid embedding APIs
+Avoids paid embedding APIs entirely
 
 3. Vector Store
 
-FAISS is used for fast similarity search
+FAISS for fast and scalable similarity search
 
-All embeddings are stored locally on disk
+All embeddings stored locally on disk
 
-Supports scalable and low-latency retrieval
+Low-latency retrieval with minimal overhead
 
-4. Retrieval Mechanism
+4. Retrieval
 
-For each user query, relevant document chunks are fetched using cosine similarity
+Fetches top-k relevant chunks using cosine similarity
 
-Only the top-k most relevant chunks are passed to the language model
+Passes only relevant context to the language model
 
-5. Prompt Engineering
+5. Prompt Design
 
-The system prompt enforces strict grounding
+Enforces strict context grounding
 
-The model is instructed to answer only from retrieved context
+The model answers only from retrieved documents
 
-If the answer is not present in the documents, the chatbot responds with “I don’t know”
+Returns “I don’t know” when information is missing
 
-6. Language Model
+6. Language Model Support
 
-Designed to support both:
+Compatible with cloud-based LLMs (OpenAI)
 
-Cloud-based LLMs (OpenAI)
+Supports fully local LLMs via Ollama (Mistral, LLaMA)
 
-Fully local LLMs via Ollama (Mistral / LLaMA)
+Final setup runs 100% locally with no API keys or billing
 
-In the final setup, the project runs 100% locally with no API key or billing required
+Key Highlights
+
+Fully local and open-source friendly
+
+No paid APIs required
+
+Modular LangChain-based design
+
+Reliable, hallucination-resistant responses
