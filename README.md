@@ -13,14 +13,22 @@ Large Language Models can hallucinate or provide generic answers when queried di
 Internal policy Q&A 
 
 ̐Employee handbooks
+
+
 Product documentation
+
 Knowledge-base assistants
+
 System Architecture
 # User Query 
 → Retriever (FAISS vector search)
+
 → Relevant Document Chunks
+
 → Prompt with Context 
+
 → Language Model 
+
 → Grounded Answer 
 
 # Key Components 
